@@ -1,12 +1,5 @@
-//Welcome the user to the game and explain how to play
-console.log("Welcome to Rock, Paper, Scissors!");
-console.log("Rock beats scissors, scissors beats paper, and paper beats rock!")
-console.log("First to win three rounds wins the game! Good Luck!")
-
-//The playing function is determined, with paper beating rock, scissors beating paper, and rock beating scissors
-//If computer selects Paper, user wins if scissors and loses if rock
-//If computer selects Scissors, user wins if rock and loses if paper
-//If computer selects Rock, user wins if paper and loses if scissors
+//Function to determine the winner at the end of each round
+//Rock beats Scissors, Scissors beat Paper, and Paper beats Scissors
 
 function playRound(userChoice, compChoice) {
 	if (compChoice == "rock") {
@@ -36,50 +29,44 @@ function playRound(userChoice, compChoice) {
   }
 }
 
-//function to run the game until someone has won three rounds
-function playGame() {
 
-  let userScore = 0
-  let compScore = 0
+//Set the initial score for the start of the game
+let userScore = 0;
+let compScore = 0;
 
-  while (userScore < 3 || compScore < 3) {
+//Select all the buttons on the page and place them into a node
 
-    //The computer generates a number, 0 is rock 1 is paper and 2 is scissors
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+  button.addEventListener('click', () => {
+
+    let userSelect = button.id;
+
+    //After user presses a button the computer makes a random choice
     const computerNumber = Math.floor(Math.random() * 3);
-    let computerSelection =  ""
+    let compSelection =  "";
 
     if (computerNumber == 0) {
-      computerSelection = "rock"
+      compSelection = "rock";
     }  else if (computerNumber == 1) {
-      computerSelection = "paper"
+      compSelection = "paper";
     } else {
-      computerSelection = "scissors"
-    }
+      compSelection = "scissors";
+    };
 
-    //User is prompted for their selection
-    let userSelection = prompt("Please enter your rock, paper, or scissors:");
-
-    //Run the function and output the winner
-
-    if (playRound(userSelection, computerSelection) == "user") {
-      console.log("You win this round!")
+    //Runs the function and outputs the winner
+    if (playRound(userSelect, compSelection) == "user") {
+      console.log("You win this round!");
       userScore += 1
-    } else if (playRound(userSelection, computerSelection) == "comp") {
-      console.log("You lost this round :/")
+    } else if (playRound(userSelect, compSelection) == "comp") {
+      console.log("You lost this round :/");
       compScore += 1
     } else {
-      console.log("The game is a tie!")
-    }
-    //Tally the final 
+      console.log("The game is a tie!");
+    };
 
-    if (userScore == 3) {
-      return "You won the game!"
-    } else if (compScore == 3) {
-      return "You lost the game :("
-    }
-  }
-}
+    console.log(userScore + ",  " + compScore);
 
-// Run the game and declare final winner
-
-console.log(playGame())
+  });
+});
