@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header, 
+.main, 
+.score,
+.selections {
+  display: flex;
+}
+
+
+h1 {
+  margin: 0;
+}
