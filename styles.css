@@ -3,17 +3,68 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
-.header, 
+header, 
 .main, 
 .score,
-.selections {
+.selections,
+.gameStatus,
+.footer {
   display: flex;
 }
 
+header,
+.footer {
+  background-color: #194e66;
+  color: #E5E7EB;
+  justify-content: center;
+  padding: 15px 0px;
+}
+
+.main{
+  flex-direction: column;
+  flex: 1;
+  background-color: #ace4e4;
+}
+
+.score {
+  justify-content: center;
+  gap: 150px;
+}
+
+.userScore,
+.compScore {
+  margin: 25px 0px;
+  padding: 15px;
+  border: 2px dashed black;
+}
+
+.selections {
+  justify-content: center;
+  gap: 100px;
+  padding: 15px;
+}
+
+.gameStatus {
+  align-items: center;
+  flex-direction: column;
+  padding: 45px 0px;
+  gap: 30px;
+}
+
+button {
+  background-color: #fff9ac;
+  border: 1px solid #70a7a7;
+  width: 75px;
+  height: 75px;
+}
 
 h1 {
+  margin: 0;
+}
+
+.footerText,
+.statusText {
   margin: 0;
 }

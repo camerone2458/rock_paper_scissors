@@ -42,6 +42,7 @@ buttons.forEach((button) => {
   button.addEventListener('click', () => {
 
     let userSelect = button.id;
+    const statusContainer = document.querySelector('#statusUpdates');
 
     //After user presses a button the computer makes a random choice
     const computerNumber = Math.floor(Math.random() * 3);
@@ -57,16 +58,31 @@ buttons.forEach((button) => {
 
     //Runs the function and outputs the winner
     if (playRound(userSelect, compSelection) == "user") {
-      console.log("You win this round!");
-      userScore += 1
+      statusContainer.textContent = "You win this round!";
+      userScore += 1;
     } else if (playRound(userSelect, compSelection) == "comp") {
-      console.log("You lost this round :/");
-      compScore += 1
+      statusContainer.textContent = "You lost this round :/";
+      compScore += 1;
     } else {
-      console.log("The game is a tie!");
+      statusContainer.textContent = "The game is a tie!";
     };
 
-    console.log(userScore + ",  " + compScore);
+    //Writes the computer and user scores to the webpage
+    const userContainer = document.querySelector('#user');
+    userContainer.textContent = userScore;
+
+    const compContainer = document.querySelector('#computer');
+    compContainer.textContent = compScore;
+
+    if (compScore == 5) {
+      statusContainer.textContent = 'The computer wins the game :/ \nPress the button to play again';
+      compScore = 0;
+      userScore = 0;
+    } else if (userScore == 5) {
+      statusContainer.textContent = 'You won the game! \nPress a button to play again!';
+      compScore = 0;
+      userScore = 0;
+    };
 
   });
 });
